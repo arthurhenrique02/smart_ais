@@ -1,3 +1,4 @@
+import os
 import random
 from datetime import datetime, timedelta
 
@@ -13,6 +14,8 @@ MODEL_PATH = "model/model.joblib"
 
 
 def train_model(data: pd.DataFrame) -> dict:
+    os.makedirs(MODEL_PATH, exist_ok=True)
+
     data["days_from_start"] = (
         pd.to_datetime(data["date"]) - pd.to_datetime(data["date"]).min()
     ).dt.days
