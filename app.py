@@ -120,9 +120,7 @@ async def train(file: UploadFile = File(...)):
 def predict(request: PredictRequest):
     try:
         prediction = predict_sales_quantity(request.date, request.color)
-        return JSONResponse(
-            content={"prediction": PredictResponse(**prediction)}, status_code=200
-        )
+        return PredictResponse(**prediction)
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
 
