@@ -23,6 +23,11 @@ IMAGE_MODEL = "stabilityai/stable-diffusion-xl-base-1.0"
 client = InferenceClient(token=HF_API_TOKEN)
 HEADERS = {"Authorization": f"Bearer {HF_API_TOKEN}"}
 
+# =============
+# NOTE: needed hugging face api key and cuda, if using nvidia gpu, to run application
+# set HF_TOKEN env (.env file or OS env) variable to your hugging face token
+# =============
+
 
 class GenerateRequest(BaseModel):
     prompt: str
